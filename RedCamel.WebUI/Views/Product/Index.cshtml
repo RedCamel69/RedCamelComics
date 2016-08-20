@@ -1,0 +1,31 @@
+﻿
+@section scripts {
+    <script src="~/Scripts/angular.js"></script>
+    <script src="~/Client/Scripts/redCamelComics.js">    </script>
+    <script src="~/Client/Scripts/ListController.js"></script>
+
+     }
+<div ng-app="redCamelComics">
+    <div ng-controller="ListController">
+        {{comics.length}}
+        <table>            
+        <tr ng-repeat="comic in comics.$values">                
+            <td>{{comic.Name}}</td>            
+            </tr>        
+        </table> 
+
+        <div class="well" ng-repeat="comic in comics.$values">
+
+            <h3>
+                <strong>{{comic.Name}}</strong>
+
+                <span class="pull-right label labelprimary">{{comic.Price}}</span>
+            </h3>
+
+            <span class="lead">{{comic.Description}}</span>
+
+        </div> 
+        
+    </div>
+</div>
+

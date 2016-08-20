@@ -1,0 +1,29 @@
+﻿@model RedCamel.Domain.Entities.Product
+
+<div class="well">    
+   
+    
+    <img src="~/images/Uploads/@Model.Image1Name"  width="50px"/>
+        
+ 
+
+    <h3>        
+    <strong>@Model.Name</strong>        
+    
+    <span class="pull-right label labelprimary">@Model.Price.ToString("c")</span>  
+        <span class="pull-right label labelprimary">@Model.Condition</span>      
+    </h3>    
+
+    
+        
+    @using (Html.BeginForm("AddToCart", "Cart")){
+        <div class="pull-right">@Html.HiddenFor(x => x.ID)           
+        @Html.Hidden("returnUrl", Request.Url.PathAndQuery)            
+        <input type="submit" class="btn btn-success" value="Add to cart" />       
+        </div>    
+    } 
+
+    <span class="lead">desc: @Model.Description</span> 
+
+</div> 
+

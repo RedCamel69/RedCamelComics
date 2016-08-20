@@ -1,0 +1,32 @@
+﻿<div class="col-lg-12 text-center">
+    <h2>Support your Convention!</h2>
+    <p class="lead">Find your local convention</p>
+</div>
+<div  >
+
+ 
+
+ 
+    <div id="Convention" class="text-center" ng-controller="ConventionsearchController as vm">
+
+        <img src="~/img/United-Kingdom-icon.png" ng-click="vm.getConventions()" data-toggle="tooltip" data-placement="bottom" title="Get All UK Conventions"/>
+        <img src="~/img/Scotland-icon.png" ng-click="vm.getConventions('Scotland')" data-toggle="tooltip" data-placement="bottom" title="Get All Scottish Conventions"/>
+        <img src="~/img/England-icon.png" ng-click="vm.getConventions('England')" data-toggle="tooltip" data-placement="bottom" title="Get All English Conventions"/>
+        
+
+        <h1 ng-show="vm.conventionsAll">All</h1>
+        <h1 ng-show="vm.conventionsScotland">Scotland</h1>
+        <h1 ng-show="vm.conventionsEngland">England</h1>
+        <h1 ng-show="vm.conventionsWales">Wales</h1>
+        <h1 ng-show="vm.conventionsIreland">Ireland</h1>
+
+        <div ng-repeat="convention in vm.conventions" class="bg-primary">
+            <h3>{{convention.Name}}</h3>
+            <h3>{{convention.Location}}</h3>
+
+        </div>
+
+    </div>
+
+
+</div>

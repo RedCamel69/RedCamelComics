@@ -1,0 +1,70 @@
+﻿
+
+<h2>News</h2>
+
+
+
+
+<div ng-app="RedCamelComicsApp" ng-controller="NewsController">
+
+   
+
+    @{
+        ViewBag.Title = "News";
+        Layout = "~/Views/Shared/_LayoutNotShop.cshtml";
+    }
+
+
+    <div ng-repeat="news in newsVm.news[0].Posts" class="bg-primary">
+        <h3>{{news.Description}} </h3>
+
+
+    </div>
+
+    <div class="panel panel-primary cbrPanel">
+        <div class="panel-heading">Latest news courtesy of CBR</div>
+        <div class="panel-body">
+            @if (Model != null)
+            {
+                try
+                {
+                    foreach (var item in Model[0].Posts)
+                    {
+                        <div class="newsItem">
+                            <h3 class="visible hidden-xs cbrDescription">@Html.Raw(item.Description)</h3>
+                            <p class="visible hidden-xs">@item.PublishedDate.Substring(0, 16)</p>
+                            <a href="@item.Link" target="_blank"><img class="cbrImage" src="@item.Image" /></a>
+                        </div>
+                    }
+                }
+                catch (Exception ex) { }
+            }
+
+        </div>
+    </div>
+
+
+    <hr />
+
+    <div class="panel panel-primary">
+        <div class="panel-heading">Latest reviews from Comic Book Vine</div>
+        <div class="panel-body">
+            @if (Model != null)
+            {
+                try
+                {
+                    foreach (var item in Model[1].Posts)
+                    {
+                        <h2>@item.Title</h2>
+                        <h5>@item.PublishedDate</h5>
+                        <p class="comicVineDescription">@Html.Raw(item.Description)</p>
+
+                        <img src="@item.Image" class="comicVineImage" />
+                    }
+                }
+                catch (Exception ex) { }
+            }
+        </div>
+    </div>
+    </div>
+

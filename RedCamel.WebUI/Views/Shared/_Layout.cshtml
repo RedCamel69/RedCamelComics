@@ -1,0 +1,85 @@
+﻿<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link href="~/Content/bootstrap.css" rel="stylesheet" />
+    <link href="~/Content/bootstrap-theme.css" rel="stylesheet" />
+    <link href="~/Content/ErrorStyles.css" rel="stylesheet" />
+
+    <link href="~/Content/RedCamel.css" rel="stylesheet" />
+    <script src="~/Scripts/jquery-1.9.1.min.js"></script>
+    <script src="~/Scripts/jquery.validate.min.js"></script>
+    <script src="~/Scripts/jquery.validate.unobtrusive.min.js"></script>
+    <script src="~/Scripts/bootstrap.js"></script>
+    <title>@ViewBag.Title</title>
+
+    <style>
+        .navbar-right{
+            float:right !important;
+            margin-right: 15px;
+            margin-left: 15px;
+        }
+
+         .navbar-left{
+            float:left !important;
+            margin-right: 15px;
+            margin-left: 15px;
+        }
+    </style>
+
+   @RenderSection("Scripts", false)
+</head>
+<body>
+    <div class="navbar navbar-inverse" role="navigation">
+        <div class="container">
+            <div class="navbar-header">
+                <button type="button" class="navbar-toggle navbar-left " data-toggle="collapse" data-target=".navbar-collapse" aria-expanded="false">
+                    <span class="sr-only">Toggle navigation</span>
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                </button>
+                <a class="navbar-brand" href="#">
+                    <span class="hidden-xs">RED CAMEL COMICS</span>
+                    <div class="visible-xs">RED CAMEL</div>
+                    <div class="visible-xs">COMICS</div>
+                </a>
+
+
+               @Html.Partial("~/Views/Shared/_Search.cshtml");
+                
+
+                @Html.Action("Summary", "Cart")
+                
+
+               
+            </div>
+            <div class="navbar-collapse collapse">
+                <ul class="nav navbar-nav">
+                    <li>@Html.ActionLink("Home", "Index", "Home")</li>
+                    <li>@Html.ActionLink("About", "About", "Home")</li>
+                    <li>@Html.ActionLink("Contact", "Contact", "Home")</li>
+                    
+                </ul>
+
+            </div>
+            
+    </div>
+   </div>
+
+    <div class="visible-xs horizontalMenuParent">
+        @Html.Action("Menu", "Nav", new{ horizontalLayout=true})
+    </div>
+    <div class="row panel">
+        <div id="categories" class="col-sm-3 hidden-xs">
+            REfinements for slected subject - if no select then all
+            @Html.Action("Menu","Nav")
+        </div>
+        <div class="col-xs-12 col-sm-8">
+            @RenderBody()
+        </div>
+    </div>
+
+</body>
+</html>

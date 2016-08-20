@@ -1,0 +1,271 @@
+﻿
+@{
+    ViewBag.Title = "CreatorProfileIndex";
+    Layout = "~/Views/Shared/_LayoutNotShop.cshtml";
+}
+
+<script src="~/Scripts/angular.js"></script>
+<script src="~/Client/Scripts/redCamelComics.js"></script>
+<script src="~/Client/Scripts/redCamelComics.service.js"></script>
+<script src="~/Client/Scripts/ArtistController.js"></script>
+<style>
+    div#masonry {
+        padding: 0;
+        margin: 0;
+        list-style: none;
+        display: -webkit-box;
+        display: -moz-box;
+        display: -ms-flexbox;
+        display: flex;
+        flex-flow: wrap;
+    }
+
+        div#masonry img {
+            transition: .8s opacity;
+            width: 22%;
+            height: auto;
+            line-height: 150px;
+            color: white;
+            font-weight: bold;
+            font-size: 3em;
+            text-align: center;
+        }
+
+        div#masonry:hover img {
+            opacity: 0.3;
+        }
+
+            div#masonry:hover img:hover {
+                opacity: 1;
+            }
+
+    .black_overlay {
+        display: none;
+        position: absolute;
+        top: 0%;
+        left: 0%;
+        width: 100%;
+        height: 100%;
+        background-color: black;
+        z-index: 1001;
+        -moz-opacity: 0.8;
+        opacity: .80;
+        filter: alpha(opacity=80);
+    }
+
+    .white_content {
+        display: none;
+        position: absolute;
+        top: 25%;
+        left: 25%;
+        width: auto;
+        height: auto;
+        padding: 16px;
+        border: 16px solid orange;
+        background-color: white;
+        z-index: 1002;
+        overflow: auto;
+    }
+
+
+    /* Styles the thumbnail */
+    a.lightbox img {
+        height: 150px;
+        border: 3px solid white;
+        box-shadow: 0px 0px 8px rgba(0, 0, 0, .3);
+        margin: 0.5vw;
+    }
+    /* Styles the lightbox, removes it from sight and adds the fade-in transition */
+    .lightbox-target {
+        position: fixed;
+        top: -100%;
+        width: 100%;
+        background: rgba(0, 0, 0, .7);
+        width: 100%;
+        opacity: 0;
+        -webkit-transition: opacity .5s ease-in-out;
+        -moz-transition: opacity .5s ease-in-out;
+        -o-transition: opacity .5s ease-in-out;
+        transition: opacity .5s ease-in-out;
+        overflow: hidden;
+    }
+        /* Styles the lightbox image, centers it vertically and horizontally, adds the zoom-in transition and makes it responsive using a combination of margin and absolute positioning */
+        .lightbox-target img {
+            margin: auto;
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            max-height: 0%;
+            max-width: 0%;
+            border: 3px solid white;
+            box-shadow: 0px 0px 8px rgba(0, 0, 0, .3);
+            box-sizing: border-box;
+            -webkit-transition: .5s ease-in-out;
+            -moz-transition: .5s ease-in-out;
+            -o-transition: .5s ease-in-out;
+            transition: .5s ease-in-out;
+        }
+    /* Styles the close link, adds the slide down transition */
+    a.lightbox-close {
+        display: block;
+        width: 50px;
+        height: 50px;
+        box-sizing: border-box;
+        background: white;
+        color: black;
+        text-decoration: none;
+        position: absolute;
+        top: -80px;
+        right: 0;
+        -webkit-transition: .5s ease-in-out;
+        -moz-transition: .5s ease-in-out;
+        -o-transition: .5s ease-in-out;
+        transition: .5s ease-in-out;
+    }
+        /* Provides part of the "X" to eliminate an image from the close link */
+        a.lightbox-close:before {
+            content: "";
+            display: block;
+            height: 30px;
+            width: 1px;
+            background: black;
+            position: absolute;
+            left: 26px;
+            top: 10px;
+            -webkit-transform: rotate(45deg);
+            -moz-transform: rotate(45deg);
+            -o-transform: rotate(45deg);
+            transform: rotate(45deg);
+        }
+        /* Provides part of the "X" to eliminate an image from the close link */
+        a.lightbox-close:after {
+            content: "";
+            display: block;
+            height: 30px;
+            width: 1px;
+            background: black;
+            position: absolute;
+            left: 26px;
+            top: 10px;
+            -webkit-transform: rotate(-45deg);
+            -moz-transform: rotate(-45deg);
+            -o-transform: rotate(-45deg);
+            transform: rotate(-45deg);
+        }
+    /* Uses the :target pseudo-class to perform the animations upon clicking the .lightbox-target anchor */
+    .lightbox-target:target {
+        opacity: 1;
+        top: 0vh;
+        left: 0vh;
+        bottom: 0;
+        z-index: 1001;
+    }
+
+    .lightbox-target img {
+        height: 80vh;
+        width: auto;
+    }
+
+    .lightbox-target:target img {
+        max-height: 100%;
+        max-width: 100%;
+        top: 10vh;
+        height: 80vh;
+        width: auto;
+    }
+
+    .lightbox-target:target a.lightbox-close {
+        z-index: 1000;
+        background-color: white;
+        right: 5vw;
+        top: 5vw;
+    }
+
+
+    .lightbox-target-title {
+        width: 100%;
+        /* background-color: red; */
+        height: 2vh;
+        padding-bottom: 2vh;
+        top: 9.5vh;
+        z-index: 20001;
+        position: absolute;
+        text-align: center;
+        margin-bottom: 2vh;
+        color: white;
+        font-style: bold;
+        top: 5vw;
+    }
+
+    @@media only screen and (max-width: 500px) {
+        div#masonry img {
+            width: 45%;
+            height: auto;
+        }
+    }
+</style>
+<h2>CreatorProfileIndex</h2>
+
+<a href="CreatorProfile/George/Perez" >George Perez</a>
+
+<a href="CreatorProfile/John/Byrne">John Byrne</a>
+
+<a href="CreatorProfile/John/Buscema">John Buscema</a>
+
+<a href="CreatorProfile/Sal/Buscema">Sal Buscema</a>
+
+<a href="CreatorProfile/Jack/Kirby">Jack Kirby</a>
+
+<a href="CreatorProfile/Frank/Quitely">Frank Quitely</a>
+
+<a href="CreatorProfile/Brian/Hitch">Brian Hitch</a>
+
+
+<body ng-app="redCamelComics">
+
+    <div ng-controller="ArtistController as vm">
+
+
+        <button ng-click="vm.getArtists()">George Perez</button>
+
+        <div ng-repeat="artist in vm.artists">
+            <span>{{artist.Name}}</span>
+
+            <div ng-repeat="section in artist.Sections.$values">
+                <h1>{{section.Title}}</h1>
+                
+            </div>
+
+            <div ng-repeat="gallery in artist.Galleries.$values">
+                <h1>{{gallery.Title}}</h1>
+
+                <div id="masonry" class="">
+                    <section>
+                        
+                            <a ng-repeat="image in gallery.Images.$values" class="lightbox" href="#{{image.Title}}"><img src="{{image.Source}}" /></a>
+                        
+                        </section>
+                </div>
+             
+                <div ng-repeat="image in gallery.Images.$values">
+                    <div class="lightbox-target" id="{{image.Title}}">
+                        <img src="{{image.Source}}" />
+                        <a class="lightbox-close" href="#close"></a>
+                        <div class="lightbox-target-title">{{image.Title}}</div>
+                        <div id="lightbox-target-info">INfo GRRRRR</div>
+                    </div>
+                
+                </div>
+
+
+                </div>
+
+    </div>
+
+        </div>
+
+</body>
+
+

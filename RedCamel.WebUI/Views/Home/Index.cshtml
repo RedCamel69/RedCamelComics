@@ -1,0 +1,400 @@
+﻿@model List<RedCamel.WebUI.Viewmodels.PostViewModel>
+
+@{
+    ViewBag.Title = "RedCamelComics";
+    Layout = "~/Views/Shared/_LayoutNotShop.cshtml";
+}
+
+
+
+<!-- MOBILE Header 
+<header id="top" class="bg-primary hidden-sm hidden-md hidden-lg" style="background-image:none;height:100%">
+    <div class="text-vertical-center">
+        <h1>RedCamel Comics</h1>
+        <h3>News, Views, Stuff</h3>
+        <br>
+        <a href="#about" class="btn btn-dark btn-lg">Find Out More</a>
+    </div>
+</header>
+    -->
+
+<!-- Header -->
+<header id="top" class="header">
+    <div class="text-vertical-center">
+        <h1>RedCamel Comics</h1>
+        <h3>News, Views, Stuff</h3>
+        <br>
+        <a href="#about" class="btn btn-dark btn-lg">Find Out More</a>
+    </div>
+</header>
+
+
+
+<!-- About -->
+<section id="about" class="about">
+    <div class="container">
+        <div class="row">
+            <div class="col-lg-12 text-center">
+                <h2>Welcome to RedCamelComics</h2>
+                <p class="lead">We have the internets best comic shop locator and the most comprehensive guide to upcoming conventions in your area.</p>
+            </div>
+        </div>
+        <!-- /.row -->
+    </div>
+    <!-- /.container -->
+</section>
+
+ <!-- Services -->
+<!-- The circle icons use Font Awesome's stacked icon classes. For more information, visit http://fontawesome.io/examples/ -->
+<section id="services" class="services bg-primary">
+    <div class="container">
+        <div class="row text-center">
+            <div class="col-lg-10 col-lg-offset-1">
+                <h2>What you will find on this site</h2>
+                <hr class="small">
+                <div class="row">
+                    <div class="col-md-3 col-sm-6">
+                        <div class="service-item">
+                            <span class="fa-stack fa-4x">
+                                <i class="fa fa-circle fa-stack-2x"></i>
+                                <i class="fa fa-cloud fa-stack-1x text-primary"></i>
+                            </span>
+                            <h4>
+                                <strong>Comic Book Store Locator</strong>
+                            </h4>
+                            <p>Support your local comic store using our nifty comic book shop locator!.</p>
+                            <a href="#findMyLocalStore" class="btn btn-light">Learn More</a>
+                        </div>
+                    </div>
+                    <div class="col-md-3 col-sm-6">
+                        <div class="service-item">
+                            <span class="fa-stack fa-4x">
+                                <i class="fa fa-circle fa-stack-2x"></i>
+                                <i class="fa fa-truck  fa-stack-1x text-primary"></i>
+                            </span>
+                            <h4>
+                                <strong>Upcoming Comic Book Releases</strong>
+                            </h4>
+                            <p>What to look out for in the next few weeks!</p>
+                            <a href="#" class="btn btn-light">Learn More</a>
+                        </div>
+                    </div>
+                    <div class="col-md-3 col-sm-6">
+                        <div class="service-item">
+                            <span class="fa-stack fa-4x">
+                                <i class="fa fa-circle fa-stack-2x"></i>
+                                <i class="fa fa-search-plus fa-stack-1x text-primary"></i>
+                            </span>
+                            <h4>
+                                <strong>Find a Comic Book Convention</strong>
+                            </h4>
+                            <p>A comprehensive guide to all upcoming comic related conventions.</p>
+                            <a href="#" class="btn btn-light">Learn More</a>
+                        </div>
+                    </div>
+                    <div class="col-md-3 col-sm-6">
+                        <div class="service-item">
+                            <span class="fa-stack fa-4x">
+                                <i class="fa fa-circle fa-stack-2x"></i>
+                                <i class="fa fa-external-link-square fa-stack-1x text-primary"></i>
+                            </span>
+                            <h4>
+                                <strong>News Flash</strong>
+                            </h4>
+                            <p>Keep up to date with all the latest comic news for books, tv and movies.</p>
+                            <a href="#" class="btn btn-light">Learn More</a>
+                        </div>
+                    </div>
+                </div>
+                <!-- /.row (nested) -->
+            </div>
+            <!-- /.col-lg-10 -->
+        </div>
+        <!-- /.row -->
+    </div>
+    <!-- /.container -->
+</section>
+
+
+<!-- News -->
+<section id="news" class="portfolio">
+    <div class="container">
+        <div class="row">
+            <div class="col-lg-12 text-center">
+                <h2>Get the latest news from the world of comics</h2>
+                <img src="~/img/jj1.jpg" style="border-bottom:solid" />
+
+                @Html.Partial("_LatestNews")
+
+            </div>
+        </div>
+        <!-- /.row -->
+    </div>
+    <!-- /.container -->
+</section>
+
+
+<!-- Find My Local Store -->
+<section id="findMyLocalStore" class="services bg-primary">
+    <div class="container">
+        <div class="row">
+
+            @Html.Partial("_FindMyLocalStore")
+        </div>
+        <!-- /.row -->
+    </div>
+    <!-- /.container -->
+</section>
+
+
+<!-- Find My Local Convention -->
+<section id="conventions" class="portfolio">
+    <div class="container">
+        <div class="row">
+            @Html.Partial("_convention")
+        </div>
+        <!-- /.row -->
+    </div>
+    <!-- /.container -->
+</section>
+
+
+   
+    <!-- BoxOffice -->
+
+    <aside id ="boxOffice" class="boxOffice">
+        <div class="text-vertical-center">
+            <h1>Comics At The Box Office</h1>
+        </div>
+    </aside>
+
+    <!-- Portfolio -->
+    <section id="portfolio" class="portfolio">
+        <div class="container">
+            <div class="row">
+                <div class="col-lg-10 col-lg-offset-1 text-center">
+                    <h2>Our Favourite Covers</h2>
+                    <hr class="small">
+                    <div class="row">
+                        <div class="col-md-6">
+                            <div class="portfolio-item">
+                                <a href="#">
+                                    <img class="img-portfolio img-responsive" src="~/img/Covers/AvengersVol1/avengers-160.jpg">
+                                </a>
+                            </div>
+                        </div>
+                        <div class="col-md-6">
+                            <div class="portfolio-item">
+                                <a href="#">
+                                    <img class="img-portfolio img-responsive" src="~/img/Covers/FantasticFourVol1/FF_Vol1_165.jpg">
+                                </a>
+                            </div>
+                        </div>
+                        <div class="col-md-6">
+                            <div class="portfolio-item">
+                                <a href="#">
+                                    <img class="img-portfolio img-responsive" src="~/img/Covers/InfinityGauntlet/InfinityGauntlet1.jpg">
+                                </a>
+                            </div>
+                        </div>
+                        <div class="col-md-6">
+                            <div class="portfolio-item">
+                                <a href="#">
+                                    <img class="img-portfolio img-responsive" src="~/img/Covers/FantasticFourVol1/FF_Vol1_166.jpg">
+                                </a>
+                            </div>
+                        </div>
+                    </div>
+                    <!-- /.row (nested) -->
+                    <a href="#" class="btn btn-dark">View More Items</a>
+                </div>
+                <!-- /.col-lg-10 -->
+            </div>
+            <!-- /.row -->
+        </div>
+        <!-- /.container -->
+    </section>
+
+    <!-- Call to Action -->
+    <aside class="call-to-action bg-primary">
+        <div class="container">
+            <div class="row">
+                <div class="col-lg-12 text-center">
+                    <h3>The buttons below are impossible to resist.</h3>
+                    <a href="#" class="btn btn-lg btn-light">Click Me!</a>
+                    <a href="#" class="btn btn-lg btn-dark">Look at Me!</a>
+                </div>
+            </div>
+        </div>
+    </aside>
+
+    <!-- Map -->
+<!-- 
+    <section id="contact" class="map">
+      Contact
+         <iframe width="100%" height="100%" frameborder="0" scrolling="no" marginheight="0" marginwidth="0" src="https://maps.google.com/maps?f=q&amp;source=s_q&amp;hl=en&amp;geocode=&amp;q=Twitter,+Inc.,+Market+Street,+San+Francisco,+CA&amp;aq=0&amp;oq=twitter&amp;sll=28.659344,-81.187888&amp;sspn=0.128789,0.264187&amp;ie=UTF8&amp;hq=Twitter,+Inc.,+Market+Street,+San+Francisco,+CA&amp;t=m&amp;z=15&amp;iwloc=A&amp;output=embed"></iframe>
+        <br />
+        <small>
+            <a href="https://maps.google.com/maps?f=q&amp;source=embed&amp;hl=en&amp;geocode=&amp;q=Twitter,+Inc.,+Market+Street,+San+Francisco,+CA&amp;aq=0&amp;oq=twitter&amp;sll=28.659344,-81.187888&amp;sspn=0.128789,0.264187&amp;ie=UTF8&amp;hq=Twitter,+Inc.,+Market+Street,+San+Francisco,+CA&amp;t=m&amp;z=15&amp;iwloc=A"></a>
+        </small>
+        </iframe>
+        
+    </section>
+-->
+
+    <!-- Call to Action -->
+    <section id="advertising" class="advertising">
+        <div class="row text-center">
+            <script async src="//pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script>
+            <!-- RCC2 -->
+            <ins class="adsbygoogle"
+                 style="display:inline-block;width:320px;height:100px"
+                 data-ad-client="ca-pub-4411156930957357"
+                 data-ad-slot="2458376159"></ins>
+            <script>
+                (adsbygoogle = window.adsbygoogle || []).push({});
+            </script>
+        </div>
+    </section>
+
+
+
+
+
+
+
+    <!-- Footer -->
+    <footer id="footer">
+        <div class="container">
+            <div class="row">
+                <div class="col-lg-10 col-lg-offset-1 text-center">
+                    <h4>
+                        <strong>RedCamelComics.co.uk</strong>
+                    </h4>
+                    <!-- <p>3481 Melrose Place<br>Beverly Hills, CA 90210</p> -->
+                    
+                    <ul class="list-unstyled">
+                    <!--    <li><i class="fa fa-phone fa-fw"></i> (123) 456-7890</li>-->
+                        <li>
+                            <i class="fa fa-envelope-o fa-fw"></i>  <a href="mailto:info@redcamelcomics.co.uk">info@redcamelcomics.co.ukj</a>
+                        </li>
+                    </ul>
+                    <br>
+                    <ul class="list-inline">
+                        <li>
+                            <a href="#"><i class="fa fa-facebook fa-fw fa-3x"></i></a>
+                        </li>
+                        <li>
+                            <a href="#"><i class="fa fa-twitter fa-fw fa-3x"></i></a>
+                        </li>
+                        <li>
+                            <a href="#"><i class="fa fa-dribbble fa-fw fa-3x"></i></a>
+                        </li>
+                    </ul>
+                    <hr class="small">
+                    <p class="text-muted">Copyright &copy; RedCamelComics @DateTime.Now.Year</p>
+                </div>
+            </div>
+        </div>
+    </footer>
+
+<script src="~/Scripts/angular.js"></script>
+
+<script src="~/Scripts/angular-route.js"></script><script src="~/Client/Scripts/LandingPageController.js"></script>
+
+<script src="~/Client/Scripts/RedCamelComicsApp.js"></script>
+<script src="~/Client/Scripts/ShopSearchController.js"></script>
+<script src="~/Client/Scripts/ConventionSearchController.js"></script>
+<script src="~/Client/Scripts/NewsController.js"></script>
+<script src="~/Client/Scripts/redCamelComics.service.js"></script>
+
+<!-- jQuery -->
+<script src="~/Scripts/jquery-1.12.2.js"></script>
+<!-- Bootstrap Core JavaScript -->
+<script src="~/Scripts/bootstrap.min.js"></script>
+
+<script src="~/Scripts/jquery.autocomplete.min.js"></script>
+<script src="~/Scripts/app/autocomplete.js"></script>
+<script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyBSEAkIWnzysOs88Qd7Z0SS4u-osah1q4o&callback="
+        async defer></script>
+
+    <!-- Custom Theme JavaScript -->
+    <script>
+        // Closes the sidebar menu
+        $("#menu-close").click(function (e) {
+            e.preventDefault();
+            $("#sidebar-wrapper").toggleClass("active");
+        });
+        // Opens the sidebar menu
+        $("#menu-toggle").click(function (e) {
+            e.preventDefault();
+            $("#sidebar-wrapper").toggleClass("active");
+        });
+        // Scrolls to the selected menu item on the page
+        $(function () {
+            $('a[href*="#"]:not([href="#"])').click(function () {
+                if (location.pathname.replace(/^\//, '') == this.pathname.replace(/^\//, '') || location.hostname == this.hostname) {
+                    var target = $(this.hash);
+                    target = target.length ? target : $('[name=' + this.hash.slice(1) + ']');
+                    if (target.length) {
+                        $('html,body').animate({
+                            scrollTop: target.offset().top
+                        }, 1000);
+                        return false;
+                    }
+                }
+            });
+        });
+    </script>
+
+    <script>
+        (function (i, s, o, g, r, a, m) {
+            i['GoogleAnalyticsObject'] = r; i[r] = i[r] || function () {
+                (i[r].q = i[r].q || []).push(arguments)
+            }, i[r].l = 1 * new Date(); a = s.createElement(o),
+            m = s.getElementsByTagName(o)[0]; a.async = 1; a.src = g; m.parentNode.insertBefore(a, m)
+        })(window, document, 'script', '//www.google-analytics.com/analytics.js', 'ga');
+
+        ga('create', 'UA-16661627-1', 'auto');
+        ga('send', 'pageview');
+
+    </script>
+
+<script type="text/javascript">
+    $(function () {
+        // Handler for .ready() called.
+       // AutoComplete.Setup();
+    });
+
+    $(document).ready(function () {
+        // Handler for .ready() called.
+        //alert('boing');
+    });
+    
+    window.onload = function () {
+        //alert('loaded');
+        AutoComplete.Setup();
+
+        /*
+        $("#autocomplete").keypress(function (e) {
+            if (e.keyCode == 13) {
+                alert("gg");
+
+                if ($(".autocomplete-suggestion").length > 0) {
+                    alert($(".autocomplete-suggestion")[0]);
+                }
+            }
+        });
+        */
+    };
+
+    $(document).ready(function () {
+        $('[data-toggle="tooltip"]').tooltip();
+    });
+</script>
+
+
+    
+
+
+

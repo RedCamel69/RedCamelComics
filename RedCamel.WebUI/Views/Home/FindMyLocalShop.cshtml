@@ -1,0 +1,117 @@
+﻿
+@{
+    ViewBag.Title = "FindMyLocalShop";
+    Layout = "~/Views/Shared/_LayoutNotShop.cshtml";
+}
+
+<script src="~/Scripts/angular.js"></script>
+<script src="~/Client/Scripts/redCamelComics.js"></script>
+<script src="~/Client/Scripts/redCamelComics.service.js"></script>
+<script src="~/Client/Scripts/ShopSearchController.js"></script>
+
+<style type="text/css">
+    .initialMap{
+        height:0px;
+        width:100%;
+        display:block;
+      
+            }
+
+     .showMap{
+        height:200px;
+        width:100%;
+        display:block;
+           -webkit-transition: height 1s; /* Safari */
+    transition: height 1s;
+            }
+    
+</style>
+
+<h2 class="text-center">FindMyLocalShop</h2>
+
+
+<div id="map"  class="initialMap">
+
+</div>
+
+
+    <div id="searchfield" class="text-center">
+        <form><input type="text" name="location" class="biginput" id="autocomplete"></form>
+    </div>
+
+    <div id="outputbox">
+        <p id="outputcontent"></p>
+    </div>
+
+    <script>
+
+ 
+
+
+
+
+
+    </script>
+
+
+
+
+    <div id="ShopSearchController" class="text-center" ng-controller="ShopsearchController as vm">
+
+
+        <!-- <button ng-click="vm.getShops('Derby')">Get Shops</button> -->
+
+       
+
+        <div ng-repeat="shop in vm.shops">
+            <span>{{shop.Name}}</span>
+
+            <span>{{shop.Latitude}}</span>
+            <span>{{shop.Longitude}}</span>
+            <span>{{shop.Distance.toFixed(2)}}</span>
+
+
+        </div>
+
+    </div>
+
+
+
+<script type="text/javascript">
+    function initMap(latitude, longitude, shops) {
+
+        document.getElementById("map").className = "";
+        document.getElementById("map").className = "showMap";
+
+        setTimeout(function () {
+
+            var myLatLng = { lat: latitude, lng: longitude };
+
+
+            // Create a map object and specify the DOM element for display.
+            var map = new google.maps.Map(document.getElementById('map'), {
+                //center: { lat: latitude, lng: longitude },
+                center: myLatLng,
+                scrollwheel: false,
+                zoom: 13
+            });
+
+
+            var marker = new google.maps.Marker({
+                position: myLatLng,
+                map: map,
+                animation: google.maps.Animation.DROP,
+                title: shops[0].Name
+            });
+
+        }, 500);
+
+
+       
+    }
+
+     
+</script>
+
+<script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyBSEAkIWnzysOs88Qd7Z0SS4u-osah1q4o&callback="
+        async defer></script>

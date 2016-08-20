@@ -1,0 +1,104 @@
+﻿<div class="col-lg-12 text-center">
+    <h2>Support your local comic shop!</h2>
+    <p class="lead">Find your local store</p>
+</div>
+<div  ng-controller="LandingPageController">
+
+    <style type="text/css">
+        .initialMap {
+            height: 0px;
+            width: 100%;
+            display: block;
+        }
+
+        .showMap {
+            height: 200px;
+            width: 100%;
+            display: block;
+            -webkit-transition: height 1s; /* Safari */
+            transition: height 1s;
+        }
+
+        #searchfield{
+            font-size:21px;
+        }
+
+
+        #autocomplete{
+                margin-top: 10px;
+    border-style: solid;
+    border-color: white;
+    background-color:#337ab7;
+    color:white;
+    text-align:center;
+        }
+
+        .autocomplete-suggestions{
+                position: absolute;
+    width: 144px;
+    top: 3962.56px;
+    left: 575px;
+    max-height: 300px;
+    z-index: 1000000;
+    display: block;
+    BORDER: white;
+    border-style: solid;
+   color: #fff;
+    background-color: #337ab7;
+    border-radius: 5px;
+    font-size: 21px;
+    overflow:hidden;
+    padding:5px;
+ 
+        }
+
+        #searchSpinner{
+               z-index: 100000;
+    color: red;
+    width: 100%;
+        }
+    </style>
+
+
+
+   
+
+
+    <div id="map" class="initialMap">
+
+    </div>
+
+    <div class="fa fa-5x fa-refresh fa-spin hidden text-center" id="searchSpinner"></div>
+
+    <div id="searchfield" class="text-center">
+        <form><input type="text" name="location" class="biginput" id="autocomplete"></form>
+    </div>
+
+    <div id="outputbox">
+        <p id="outputcontent"></p>
+    </div>
+
+
+    <div id="ShopSearchController" class="text-center" ng-controller="ShopsearchController as vm">
+
+
+        <!-- <button ng-click="vm.getShops('Derby')">Get Shops</button> -->
+
+
+
+        <div ng-repeat="shop in vm.shops" class="bg-primary">
+            <h3>{{shop.Name}} in {{shop.Town}}</h3>
+
+            <!--<span>{{shop.Latitude}}</span>
+            <span>{{shop.Longitude}}</span>-->
+            <h4>Distance: {{shop.Distance.toFixed(2)}} miles</h4>
+            <h4><i class="fa fa-phone"></i>&nbsp;{{shop.Phone}}</h4>
+            <h4><i class="fa fa-external-link">&nbsp;</i>{{shop.WebPage}}</h4>
+            <h4><i class="fa fa-external-link">&nbsp;</i>{{shop.Email}}</h4>
+            <hr />
+        </div>
+
+    </div>
+
+
+</div>

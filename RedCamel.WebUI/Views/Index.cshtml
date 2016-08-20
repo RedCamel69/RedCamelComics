@@ -1,0 +1,58 @@
+﻿@model List<RedCamel.WebUI.Viewmodels.PostViewModel>
+
+@{
+    ViewBag.Title = "Index";
+    Layout = "~/Views/Shared/_LayoutNotShop.cshtml";
+}
+
+
+<style>
+    .landingPageJumbotron{
+        background-color:red;
+        color:white;
+        text-align:center;
+        font-weight:bold;
+        font-size:5vh;
+        margin-bottom: 0.1vh;
+    }
+
+    .landingPageJumbotron:hover{
+        opacity:0.5;
+    }
+</style>
+
+<div class="jumbotron hidden-sm landingPageJumbotron" onclick="javascript:location.href='../home/news'">
+    News
+</div>
+
+<div class="jumbotron hidden-sm landingPageJumbotron" onclick="javascript:location.href='../product/list'">
+    Shop
+</div>
+
+<div class="jumbotron hidden-sm landingPageJumbotron" onclick="javascript:location.href='../CreatorProfileIndex'">
+    Profiles
+</div>
+
+<div class="jumbotron hidden-sm landingPageJumbotron" onclick="javascript: location.href = '../FindMyLocalShop'">
+    Find your local shop
+</div>
+
+<hr />
+
+<div class="jumbotron hidden-sm landingPageJumbotron">
+    <script async src="//pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script>
+    <!-- RCC2 -->
+    <ins class="adsbygoogle"
+         style="display:inline-block;width:320px;height:100px"
+         data-ad-client="ca-pub-4411156930957357"
+         data-ad-slot="2458376159"></ins>
+    <script>
+(adsbygoogle = window.adsbygoogle || []).push({});
+    </script>
+</div>
+
+
+
+
+
+

@@ -1,0 +1,279 @@
+﻿
+@model  RedCamel.WebUI.Models.ProfileViewModel
+
+@{
+    ViewBag.Title = "CreatorProfile";
+    Layout = "~/Views/Shared/_LayoutNotShop.cshtml";
+}
+
+<h2>CreatorProfile</h2>
+
+<style>
+
+   
+
+    div#masonry {
+	padding: 0;
+  margin: 0;
+  list-style: none;
+  display: -webkit-box;  
+
+  display: -moz-box;
+  display: -ms-flexbox;
+  display: flex;
+  
+  flex-flow:wrap;
+ 
+}
+div#masonry img { 
+	
+	transition: .8s opacity;
+
+    width: 22%;
+    height:auto;
+    
+  
+  line-height: 150px;
+  color: white;
+  font-weight: bold;
+  font-size: 3em;
+  text-align: center;
+}
+div#masonry:hover img {
+	opacity: 0.3;
+}
+div#masonry:hover img:hover {
+	opacity: 1;
+}
+.black_overlay{
+			display: none;
+			position: absolute;
+			top: 0%;
+			left: 0%;
+			width: 100%;
+			height: 100%;
+			background-color: black;
+			z-index:1001;
+			-moz-opacity: 0.8;
+			opacity:.80;
+			filter: alpha(opacity=80);
+           
+		}
+    .white_content {
+        display: none;
+        position: absolute;
+        top: 25%;
+        left: 25%;
+        width: auto;
+        height: auto;
+        padding: 16px;
+        border: 16px solid orange;
+        background-color: white;
+        z-index: 1002;
+        overflow: auto;
+    }
+
+
+    /* Styles the thumbnail */
+ a.lightbox img {
+    height: 150px;
+    border: 3px solid white;
+    box-shadow: 0px 0px 8px rgba(0, 0, 0, .3);
+    margin: 0.5vw;
+}
+/* Styles the lightbox, removes it from sight and adds the fade-in transition */
+ .lightbox-target {
+    position: fixed;
+    top: -100%;
+    width: 100%;
+    background: rgba(0, 0, 0, .7);
+    width: 100%;
+    opacity: 0;
+    -webkit-transition: opacity .5s ease-in-out;
+    -moz-transition: opacity .5s ease-in-out;
+    -o-transition: opacity .5s ease-in-out;
+    transition: opacity .5s ease-in-out;
+    overflow: hidden;
+}
+/* Styles the lightbox image, centers it vertically and horizontally, adds the zoom-in transition and makes it responsive using a combination of margin and absolute positioning */
+ .lightbox-target img {
+    margin: auto;
+    position: absolute;
+    top: 0;
+    left:0;
+    right:0;
+    bottom: 0;
+    max-height: 0%;
+    max-width: 0%;
+    border: 3px solid white;
+    box-shadow: 0px 0px 8px rgba(0, 0, 0, .3);
+    box-sizing: border-box;
+    -webkit-transition: .5s ease-in-out;
+    -moz-transition: .5s ease-in-out;
+    -o-transition: .5s ease-in-out;
+    transition: .5s ease-in-out;
+}
+/* Styles the close link, adds the slide down transition */
+ a.lightbox-close {
+    display: block;
+    width:50px;
+    height:50px;
+    box-sizing: border-box;
+    background: white;
+    color: black;
+    text-decoration: none;
+    position: absolute;
+    top: -80px;
+    right: 0;
+    -webkit-transition: .5s ease-in-out;
+    -moz-transition: .5s ease-in-out;
+    -o-transition: .5s ease-in-out;
+    transition: .5s ease-in-out;
+}
+/* Provides part of the "X" to eliminate an image from the close link */
+ a.lightbox-close:before {
+    content:"";
+    display: block;
+    height: 30px;
+    width: 1px;
+    background: black;
+    position: absolute;
+    left: 26px;
+    top:10px;
+    -webkit-transform:rotate(45deg);
+    -moz-transform:rotate(45deg);
+    -o-transform:rotate(45deg);
+    transform:rotate(45deg);
+}
+/* Provides part of the "X" to eliminate an image from the close link */
+ a.lightbox-close:after {
+    content:"";
+    display: block;
+    height: 30px;
+    width: 1px;
+    background: black;
+    position: absolute;
+    left: 26px;
+    top:10px;
+    -webkit-transform:rotate(-45deg);
+    -moz-transform:rotate(-45deg);
+    -o-transform:rotate(-45deg);
+    transform:rotate(-45deg);
+}
+/* Uses the :target pseudo-class to perform the animations upon clicking the .lightbox-target anchor */
+ .lightbox-target:target {
+    opacity: 1;
+    top: 0vh;
+    left:0vh;
+    bottom: 0;
+    z-index:1001;
+}
+
+ .lightbox-target img{
+     height:80vh;
+     width:auto;
+ }
+
+.lightbox-target:target img {
+    max-height: 100%;
+    max-width: 100%;
+    top:10vh;
+    height:80vh;
+     width:auto;
+}
+.lightbox-target:target a.lightbox-close {
+      
+    z-index: 1000;
+    background-color: white;
+     right: 5vw;
+     top:5vw;
+}   
+
+
+.lightbox-target-title{
+       width: 100%;
+    /* background-color: red; */
+    height: 2vh;
+    padding-bottom: 2vh;
+    top: 9.5vh;
+    z-index: 20001;
+    position: absolute;
+    text-align: center;
+    margin-bottom: 2vh;
+    color: white;
+    font-style: bold;
+    top:5vw;
+}
+
+@@media only screen and (max-width: 500px) {
+    div#masonry img { 
+	
+    width: 45%;
+    height:auto;  
+    }
+
+}
+             
+</style>
+
+<h1>@Model.Name</h1>
+
+@foreach (var s in Model.Sections)
+{
+
+    <section>
+        <h1>@s.Title</h1>
+        <p>@s.Text</p>
+    </section>
+}
+
+<div id="masonry" class="">
+    <section>
+
+@foreach (var s in Model.Galleries[0].Images)
+{
+    <a class="lightbox" href="#@s.Title"><img src="@s.Source" /></a>
+
+}
+   
+    </section>
+ </div>
+
+
+@foreach (var s in Model.Galleries[0].Images)
+{
+    <div class="lightbox-target" id="@s.Title">
+        <img src="@s.Source" />
+        <a class="lightbox-close" href="#close"></a>
+        <div class="lightbox-target-title">@s.Title</div>
+        <div id="lightbox-target-info">INfo GRRRRR</div>
+    </div>
+
+}
+
+
+
+
+<!--
+<section>
+    <a class="lightbox" href="#first<hr />
+img"><img src="~/Images/Covers/AvengersVol1/Avengers185-1.jpg" /></a>
+    <div class="lightbox-target" id="firstimg">
+        <img src="~/Images/Covers/AvengersVol1/Avengers185-1.jpg" />
+        <a class="lightbox-close" href="#close"></a>
+    </div>
+    <a class="lightbox" href="#secondimg"><img src="~/Images/Covers/AvengersVol1/Avengers185-1.jpg" /></a>
+    <div class="lightbox-target" id="secondimg">
+        <img src="~/Images/Covers/AvengersVol1/Avengers185-1.jpg" />
+        <a class="lightbox-close" href="#close"></a>
+    </div>
+
+</section>
+
+
+
+<section>
+    Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nulla blandit placerat nunc, eget mollis elit fringilla et. Vestibulum eget ligula sem. Nam vel volutpat augue. Suspendisse condimentum ut enim eu hendrerit. Ut in sem vel quam posuere sollicitudin in et ex. Curabitur et efficitur odio. Nunc fermentum, elit eget fringilla euismod, tortor ante mollis libero, vitae tempor justo felis a leo. Mauris ultricies, mauris quis ultrices tincidunt, turpis metus imperdiet tortor, sed convallis purus ante id turpis. Praesent rutrum justo vel accumsan pulvinar. Sed scelerisque in elit ut auctor.
+</section>
+
+ 
